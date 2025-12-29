@@ -303,6 +303,10 @@ th:last-child,
 td:last-child {
   text-align: center;
 }
+td:nth-child(2){
+  color: var(--color-red);
+  font-weight: bold;
+}
 td:nth-last-child(2){
   line-height: 2em;
 }

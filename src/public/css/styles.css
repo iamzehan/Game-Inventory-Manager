@@ -70,7 +70,6 @@ body {
 }
 
 .nav-container {
-  max-width: 1200px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -79,7 +78,7 @@ body {
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 0.5em 1em;
   font-weight: bold;
   width: 100%;
@@ -92,7 +91,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 1.5rem;
   list-style: none;
   font-size: 1.5rem;
 }
@@ -100,7 +98,8 @@ body {
 .nav-links li {
   width: 100%;
   display: flex;
-  font-size: 1rem;
+  height: 2.5em;
+  font-size: 1.25rem;
 }
 .nav-links a {
   width: 100%;
@@ -118,9 +117,11 @@ body {
   color: var(--color-blue-3);
 }
 
-.nav-links a.active {
+.nav-links li:has(a.active) a.active{
   color: var(--color-blue-3);
-  border-bottom: 2px solid var(--color-blue-3);
+  font-weight: bold;
+  border-bottom: 1px solid var(--color-blue-2);
+  position: relative;
 }
 
 .content {
@@ -220,19 +221,23 @@ button.primary {
 .content.games {
   align-items: center;
 }
-.content.games > form.search-form {
+.content.games .header{
   background-color: var(--backdrop-1);
-  height: 200px;
   width: 100%;
-  padding: 2em;
+  padding: 1em 2em;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+}
+.content.games form.search-form {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   input {
     width: 500px;
     height: 3em;
-    border-radius: 0.25em 0 0 0.25em;
-    border: 1px solid var(--border-1);
+    border-radius: 1.5em 0 0 1.5em;
+    border: 1px solid var(--border-2);
     padding: 1em;
   }
   input:focus {
@@ -241,15 +246,15 @@ button.primary {
   }
   button {
     height: 3em;
-    border-radius: 0 0.25em 0.25em 0;
+    border-radius: 0 1.5em 1.5em 0;
   }
 }
 .content.games > .subcontainer {
-  margin-top: 1em;
+  margin-top: 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
+  gap: 1em;
   padding: 0.5em;
   width: 80%;
   a {
@@ -307,7 +312,7 @@ td:nth-child(2){
   color: var(--color-red);
   font-weight: bold;
 }
-td:nth-last-child(2){
+td:nth-last-child(3){
   line-height: 2em;
 }
 button.delete {
@@ -332,12 +337,30 @@ button.edit {
 }
 
 .content.add-games{
-  width: 80%;
+  width: 100%;
+  max-width: 600px;
   justify-self: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2em;
   padding: 4em;
+  border: 1px solid var(--border-1);
+  height: fit-content;
+  margin-top: 3em;
+  border-radius: 1em;
+  background-color: white;
+  position: relative;
+  a{
+    align-self: flex-end;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+  form{
+    width: 100%;
+    max-width: 500px;
+  }
 }
 .form-group {
   margin-bottom: 1.2rem;

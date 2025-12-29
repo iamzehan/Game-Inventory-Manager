@@ -43,6 +43,8 @@ i.mi {
   --box-shadow-1: 0px 5px 15px 5px var(--border-1);
   --box-shadow-2: 0px 1px 5px 1px var(--color-blue-3-fade);
   --backdrop-1: rgba(180, 180, 180, 0.103);
+  --color-yellow-1: rgb(255, 217, 0);
+  --color-yellow-2: rgb(255, 187, 0);
 }
 body {
   margin: 0;
@@ -343,13 +345,14 @@ button.edit {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
+  gap: 1em;
   padding: 4em;
   border: 1px solid var(--border-1);
   height: fit-content;
   margin-top: 3em;
   border-radius: 1em;
   background-color: white;
+  box-shadow: var(--box-shadow-1);
   position: relative;
   a{
     align-self: flex-end;
@@ -489,4 +492,30 @@ span.tag{
   color: var(--color-blue-3);
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
+}
+
+.update{
+  color: var(--color-yellow-2);
+}
+
+button.primary.update{
+  background-color: var(--color-yellow-2);
+  color: white;
+  text-shadow: 1px 1px var(--border-1);
+  border-color: var(--color-yellow-2);
+  &:hover{
+    background-color: white;
+    color: var(--color-yellow-2);
+  }
+}
+
+.hero-icon {
+  font-size: 1.5rem;
+  border: 1px solid;
+  padding: 0.5em;
+  aspect-ratio: 1/1;
+  border-radius: 1.5em;
+  color: white;
+  background-color: var(--color-yellow-2);
+  text-shadow: 2px 1px var(--border-1);
 }

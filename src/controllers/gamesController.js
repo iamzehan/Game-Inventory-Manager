@@ -11,6 +11,12 @@ exports.renderAddGames = async (req, res) => {
     res.render("addNewGame",{title: "Add New Game", developers, genres});
 }
 
+exports.renderEditGames = async (req, res) => {
+    const game_id = req.params.id;
+    const game = await db.getGameById(game_id);
+    res.json(game);
+}
+
 exports.postAddNewGame = async (req, res) => {
   try {
     const { title, description, genre_ids = [], developer_ids = [] } = req.body;

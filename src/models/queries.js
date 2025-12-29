@@ -35,6 +35,28 @@ ORDER BY g.id;
   return rows;
 };
 
+exports.getGameById = async (id) => {
+  const SQL = `
+SELECT 
+    g.id,
+    g.title,
+    g.description,
+    ARRAY_AGG(DISTINCT ge.name) AS genres,
+    ARRAY_AGG(DISTINCT d.name) AS developers
+FROM game g
+-- Join genres
+LEFT JOIN game_genre gg ON g.id = gg.game_id
+LEFT JOIN genre ge ON gg.genre_id = ge.id
+-- Join developers
+LEFT JOIN game_developer gd ON g.id = gd.game_id
+LEFT JOIN developer d ON gd.developer_id = d.id
+WHERE g.id = $1
+GROUP BY g.id, g.title, g.description;
+    `;
+  const { rows } = await pool.query(SQL, [id]);
+  return rows;
+};
+
 exports.getDevelopers = async () => {
   const SQL = `
     SELECT * from developer

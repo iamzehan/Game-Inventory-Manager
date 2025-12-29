@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="sidebar">
+        <%- include('partials/navbar', { page: 'games' }) %>
+      </header>
+      <main class="content games">
+        <form class="search-form" method="GET" action="/games/search">
+          <input type="text" placeholder="Search" />
+          <button type="submit" class="primary">
+            Search <i class="mi">search</i>
+          </button>
+        </form>
+        <div class="subcontainer">
+          <a href="/games/add"
+            ><button class="primary">Add new <i class="mi">add</i></button></a
+          >
+          <table class="games-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Genre</th>
+                <th class="actions-col">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% if (!games.length) { %>
+              <tr>
+                <td colspan="5" class="empty-state">No games found</td>
+              </tr>
+              <% } %> <% games.forEach((game) => { %>
+              <tr data-id="<%= game.id %>">
+                <td><%= game.id %></td>
+                <td><%= game.title %></td>
+                <td><%= game.description %></td>
+                <td><%= game.genre_name %></td>
+                <td class="actions">
+                  <a href="/games/<%= game.id %>/edit" class="btn btn-edit"
+                    ><button class="edit"><i class="mi">edit</i></button></a
+                  >
+
+                  <form
+                    action="/games/<%= game.id %>?_method=DELETE"
+                    method="POST"
+                    class="inline-form"
+                  >
+                    <button class="delete" type="submit" class="btn btn-delete"><i class="mi">delete</i></button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
+</html>

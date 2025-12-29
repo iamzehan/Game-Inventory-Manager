@@ -99,6 +99,7 @@ body {
 .nav-links li {
   width: 100%;
   display: flex;
+  font-size: 1rem;
 }
 .nav-links a {
   width: 100%;
@@ -124,6 +125,7 @@ body {
 .content {
   grid-column: 2;
   display: flex;
+  flex-direction: column;
 }
 
 .content > .total-counts {
@@ -190,5 +192,131 @@ body {
   &:last-child .count {
     color: var(--color-blue-3);
     background-color: var(--color-blue-3-fade);
+  }
+}
+
+button.primary{
+  background-color: var(--color-blue-3);
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+  border: 2px solid var(--color-blue-3);
+  transition: 0.3s all ease-in-out;
+  i{
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  &:hover{
+    color: var(--color-blue-3);
+    background-color: white;
+  }
+}
+.content.games{
+  align-items: center;
+}
+.content.games > form.search-form{
+  background-color: var(--backdrop-1);
+  height: 200px;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input{
+    width: 500px;
+    height: 3em;
+    border-radius: 0.25em 0 0 0.25em;
+    border: 1px solid var(--border-1);
+    padding: 1em;
+  }
+  input:focus{
+    border: 1px solid var(--color-blue-3);
+    outline: none;
+  }
+  button{
+    height: 3em;
+    border-radius: 0 0.25em 0.25em 0;
+  }
+}
+.content.games > .subcontainer{
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  padding: 0.5em;
+  width: 80%;
+  a{
+    align-self: flex-end;
+    text-decoration: none;
+  }
+}
+
+.games-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: var(--box-shadow-1);
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.games-table thead {
+  background: var(--color-blue-2);
+}
+
+.games-table th,
+.games-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-1);
+}
+
+.games-table th {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.games-table tbody tr:hover {
+  background: var(--backdrop-1);
+}
+
+.games-table td {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.games-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+th:last-child, td:last-child{
+  text-align: center;
+}
+button.delete{
+  background-color: transparent;
+  border: none;
+  color: var(--color-red-fade);
+  font-size: 1.2rem;
+  transition: 0.3s all ease-in-out;
+  &:hover{
+    color: var(--color-red);
+  }
+}
+button.edit{
+    background-color: transparent;
+  border: none;
+  color: var(--color-blue-1-fade);
+  font-size: 1.2rem;
+  transition: 0.3s all ease-in-out;
+  &:hover{
+    color: var(--color-blue-1);
   }
 }

@@ -509,13 +509,21 @@ button.primary.update{
   }
 }
 
-.hero-icon {
+.hero-icon{
   font-size: 1.5rem;
   border: 1px solid;
   padding: 0.5em;
   aspect-ratio: 1/1;
   border-radius: 1.5em;
   color: white;
+}
+
+.hero-icon.update{
   background-color: var(--color-yellow-2);
+  text-shadow: 2px 1px var(--border-1);
+}
+
+.hero-icon.new{
+  background-color: var(--color-blue-3);
   text-shadow: 2px 1px var(--border-1);
 }

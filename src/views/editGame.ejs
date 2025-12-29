@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <header class="sidebar">
+        <%- include('partials/navbar', { page: 'games' }) %>
+      </header>
+
+      <!-- Main Content -->
+      <main class="content add-games">
+        <a href="/games">
+          <button class="close">
+            <i class="mi">close</i>
+          </button>
+        </a>
+
+        <h1 class="title"><%= title %></h1>
+
+<form action="/games/edit/<%= game.id %>" method="POST" class="user-list">
+
+  <!-- Game Title -->
+  <div class="form-group">
+    <label for="title">Game Name</label>
+    <input type="text" name="title" id="title" placeholder="Enter game name" required value="<%= game.title %>" />
+  </div>
+
+  <!-- Genres Multi-Select -->
+  <div class="form-group">
+    <label>Genres</label>
+    <div class="multi-select" data-name="genre_ids[]">
+      <div class="multi-select-trigger">Select genres</div>
+      <div class="multi-select-options">
+        <% genres.forEach(genre => { %>
+          <label class="option">
+            <input type="checkbox" value="<%= genre.id %>" 
+              <% if (game.genres.includes(genre.name)) { %> checked <% } %> />
+            <span><%= genre.name %></span>
+          </label>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Developers Multi-Select -->
+  <div class="form-group">
+    <label>Developers</label>
+    <div class="multi-select" data-name="developer_ids[]">
+      <div class="multi-select-trigger">Select developers</div>
+      <div class="multi-select-options">
+        <% developers.forEach(dev => { %>
+          <label class="option">
+            <input type="checkbox" value="<%= dev.id %>" 
+              <% if (game.developers.includes(dev.name)) { %> checked <% } %> />
+            <span><%= dev.name %></span>
+          </label>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" maxlength="200" required><%= game.description %></textarea>
+  </div>
+
+  <!-- Submit -->
+  <div class="form-group btn">
+    <button type="submit" class="primary">Update Game <i class="mi">edit</i></button>
+  </div>
+
+</form>
+
+      </main>
+
+      <footer class="footer"></footer>
+      <script>
+document.querySelectorAll(".multi-select").forEach(select => {
+  const trigger = select.querySelector(".multi-select-trigger");
+  const options = select.querySelectorAll("input[type='checkbox']");
+  const fieldName = select.dataset.name;
+  const form = select.closest("form");
+
+  // Toggle dropdown
+  trigger.addEventListener("click", () => select.classList.toggle("open"));
+
+  // Update label with selected options
+  function updateLabel() {
+    const selected = [...options]
+      .filter(o => o.checked)
+      .map(o => o.nextElementSibling.textContent);
+    trigger.textContent = selected.length ? selected.join(", ") : trigger.textContent;
+  }
+
+  // Sync hidden inputs for form submission
+  function syncHiddenInputs() {
+    select.querySelectorAll("input[type='hidden']").forEach(i => i.remove());
+    options.forEach(option => {
+      if (option.checked) {
+        const hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = fieldName;
+        hidden.value = option.value;
+        select.appendChild(hidden);
+      }
+    });
+  }
+
+  // Listen to checkbox changes
+  options.forEach(option => option.addEventListener("change", () => {
+    updateLabel();
+    syncHiddenInputs();
+  }));
+
+  // Ensure hidden inputs exist on submit
+  form.addEventListener("submit", syncHiddenInputs);
+
+  // Close dropdown if clicked outside
+  document.addEventListener("click", e => {
+    if (!select.contains(e.target)) select.classList.remove("open");
+  });
+
+  // **Initialize label on page load**
+  updateLabel();
+  syncHiddenInputs(); // ensure hidden inputs exist for pre-checked options
+});
+</script>
+
+
+    </div>
+  </body>
+</html>

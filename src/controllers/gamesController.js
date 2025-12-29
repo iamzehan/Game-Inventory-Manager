@@ -1,3 +1,4 @@
+const { response } = require('express');
 const db = require('../models/queries');
 
 exports.renderGames = async (req, res) => {
@@ -13,8 +14,10 @@ exports.renderAddGames = async (req, res) => {
 
 exports.renderEditGames = async (req, res) => {
     const game_id = req.params.id;
+    const developers = await db.getDevelopers();
+    const genres = await db.getGenre();
     const game = await db.getGameById(game_id);
-    res.json(game);
+    res.render("editGame",{title: "Edit Game", game:game[0], developers, genres});
 }
 
 exports.postAddNewGame = async (req, res) => {

@@ -43,7 +43,9 @@ app.set("view engine", "ejs");
 
 // routes
 const routes = require('./routes');
-app.use("/", (req, res)=> res.render("index"))
+app.use("/dashboard", routes.dashboardRouter);
+app.use("/", (req, res)=> res.redirect("/dashboard"))
+
 
 // port
 const PORT = process.env.PORT || '3000';

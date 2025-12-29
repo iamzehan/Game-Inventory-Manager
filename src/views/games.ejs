@@ -43,7 +43,12 @@
                 <td><%= game.id %></td>
                 <td><%= game.title %></td>
                 <td><%= game.description %></td>
-                <td><%= game.genre_name %></td>
+                <td>
+                  <% game.genres.forEach(genre => { %>
+                  <span class="tag"><%= genre %></span>
+                  <% }) %>
+                </td>
+
                 <td class="actions">
                   <a href="/games/<%= game.id %>/edit" class="btn btn-edit"
                     ><button class="edit"><i class="mi">edit</i></button></a
@@ -54,7 +59,9 @@
                     method="POST"
                     class="inline-form"
                   >
-                    <button class="delete" type="submit" class="btn btn-delete"><i class="mi">delete</i></button>
+                    <button class="delete" type="submit" class="btn btn-delete">
+                      <i class="mi">delete</i>
+                    </button>
                   </form>
                 </td>
               </tr>

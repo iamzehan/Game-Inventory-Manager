@@ -83,9 +83,9 @@ body {
   padding: 0.5em 1em;
   font-weight: bold;
   width: 100%;
-  color: var(--color-blue-3);
+  color: white;
+  background-color: var(--color-blue-2);
   text-decoration: none;
-  box-shadow: var(--box-shadow-2);
 }
 
 .nav-links {
@@ -302,6 +302,9 @@ button.primary {
 th:last-child,
 td:last-child {
   text-align: center;
+}
+td:nth-last-child(2){
+  line-height: 2em;
 }
 button.delete {
   background-color: transparent;

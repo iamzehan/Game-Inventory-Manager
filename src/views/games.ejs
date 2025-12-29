@@ -12,13 +12,18 @@
         <%- include('partials/navbar', { page: 'games' }) %>
       </header>
       <main class="content games">
-        <form class="search-form" method="GET" action="/games/search">
-          <input type="text" placeholder="Search" />
-          <button type="submit" class="primary">
-            Search <i class="mi">search</i>
-          </button>
-        </form>
+        <div class="header">
+          <h1 class="title">Games Inventory</h1>
+          <form class="search-form" method="GET" action="/games/search">
+            <input type="text" placeholder="Search" />
+            <button type="submit" class="primary">
+              Search <i class="mi">search</i>
+            </button>
+          </form>
+        </div>
+
         <div class="subcontainer">
+          
           <a href="/games/add"
             ><button class="primary">Add new <i class="mi">add</i></button></a
           >
@@ -29,7 +34,8 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Genre</th>
-                <th class="actions-col">Actions</th>
+                <th class="actions-col">Edit</th>
+                <th class="actions-col">Delete</th>
               </tr>
             </thead>
 
@@ -53,7 +59,8 @@
                   <a href="/games/<%= game.id %>/edit" class="btn btn-edit"
                     ><button class="edit"><i class="mi">edit</i></button></a
                   >
-
+                </td>
+                <td class="actions">
                   <form
                     action="/games/<%= game.id %>?_method=DELETE"
                     method="POST"

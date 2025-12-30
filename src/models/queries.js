@@ -192,3 +192,9 @@ exports.getAllGenres = async() => {
   const {rows} = await pool.query(SQL);
   return rows;
 }
+
+exports.getGenreById = async(genreId)=> {
+  const SQL = `SELECT * FROM genre WHERE id=$1`;
+  const {rows} = await pool.query(SQL, [genreId]);
+  return rows[0];
+}

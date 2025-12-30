@@ -35,6 +35,7 @@ async function createTablesAndSeed() {
   await client.query(`
     DROP TABLE IF EXISTS game_image;
     DROP TABLE IF EXISTS game_developer;
+    DROP TABLE IF EXISTS game_genre;
     DROP TABLE IF EXISTS image;
     DROP TABLE IF EXISTS game;
     DROP TABLE IF EXISTS developer;
@@ -50,14 +51,19 @@ async function createTablesAndSeed() {
     CREATE TABLE game (
       id SERIAL PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
-      description TEXT,
-      genre_id INTEGER NOT NULL REFERENCES genre(id) ON DELETE RESTRICT
+      description TEXT
     );
 
     CREATE TABLE developer (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       description TEXT
+    );
+
+    CREATE TABLE game_genre (
+      game_id INTEGER REFERENCES game(id) ON DELETE CASCADE,
+      genre_id INTEGER REFERENCES genre(id) ON DELETE CASCADE,
+      PRIMARY KEY (game_id, genre_id)
     );
 
     CREATE TABLE game_developer (

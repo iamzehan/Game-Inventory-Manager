@@ -1,0 +1,83 @@
+const { response } = require("express");
+const db = require("../models/queries");
+
+exports.renderGames = async (req, res) => {
+  const games = await db.getAllGames();
+  res.render("games", { title: "Games", games });
+};
+
+exports.renderAddGames = async (req, res) => {
+  const developers = await db.getDevelopers();
+  const genres = await db.getGenre();
+  res.render("addNewGame", { title: "Add New Game", developers, genres });
+};
+
+exports.renderEditGames = async (req, res) => {
+  const game_id = req.params.id;
+  const developers = await db.getDevelopers();
+  const genres = await db.getGenre();
+  const game = await db.getGameById(game_id);
+  res.render("editGame", {
+    title: "Edit Game",
+    game: game[0],
+    developers,
+    genres,
+  });
+};
+
+exports.postAddNewGame = async (req, res) => {
+  try {
+    const { title, description, genre_ids = [], developer_ids = [] } = req.body;
+    // 1. Create game
+    const gameId = await db.createGame(title, description);
+
+    // 2. Associate genres & developers
+    await db.addGenres(gameId, genre_ids);
+    await db.addDevelopers(gameId, developer_ids);
+
+    res.redirect("/games");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+
+exports.postUpdateGame = async (req, res) => {
+  const gameId = Number(req.params.id);
+  try {
+    const { title, description, genre_ids = [], developer_ids = [] } = req.body;
+    // 1. Update game
+    await db.updateGame(gameId, title, description);
+
+    // 2. Update genres & developers
+    await db.updateGenres(gameId, genre_ids);
+    await db.updateDevelopers(gameId, developer_ids);
+
+    res.redirect("/games");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+
+// Delete game
+exports.deleteGame = async (req, res) => {
+  const gameId = Number(req.params.id);
+
+  if (!Number.isInteger(gameId)) {
+    return res.status(400).send("Invalid game ID");
+  }
+
+  try {
+    const isDeleted = await db.deleteGame(gameId);
+
+    if (!isDeleted) {
+      return res.status(404).send("Game not found");
+    }
+    
+    res.redirect("/games");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};

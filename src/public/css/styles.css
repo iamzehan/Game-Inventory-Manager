@@ -165,7 +165,7 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 5%;
+    width: 1em;
     border-radius: 0.5em 0 0 0.5em;
   }
   .title {
@@ -194,6 +194,27 @@ body {
     background-color: var(--color-blue-2-fade);
   }
   &:last-child .count {
+    color: var(--color-blue-3);
+    background-color: var(--color-blue-3-fade);
+  }
+  &:first-child:hover {
+    color: var(--color-red);
+  }
+  &:nth-child(2):hover {
+    color: var(--color-blue-2);
+  }
+  &:last-child:hover {
+    color: var(--color-blue-3);
+  }
+  &:first-child::before {
+    color: var(--color-red);
+    background-color: var(--color-red-fade);
+  }
+  &:nth-child(2)::before {
+    color: var(--color-blue-2);
+    background-color: var(--color-blue-2-fade);
+  }
+  &:last-child::before {
     color: var(--color-blue-3);
     background-color: var(--color-blue-3-fade);
   }

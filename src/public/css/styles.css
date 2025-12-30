@@ -62,9 +62,18 @@ body {
 }
 .sidebar {
   height: 100vh;
-  max-width: 300px;
+  width: 300px;
   background-color: var(--color-blue-1);
   color: white;
+  position: fixed;
+}
+
+.sidebar.hide{
+  transform: translateX(-100%);
+}
+main.expand{
+  transform: translateX(-300px);
+  width: 100vw;
 }
 .navbar {
   background: var(--color-blue-1);

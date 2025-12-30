@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <header class="sidebar">
+        <%- include('partials/navbar', { page: 'genres' }) %>
+      </header>
+
+      <!-- Main Content -->
+      <main class="content add-games">
+        <a href="/genres">
+          <button class="close">
+            <i class="mi">close</i>
+          </button>
+        </a>
+        <span class="hero-icon new"><i class="mi">category</i></span>
+        <h1 class="title"><%= title %></h1>
+
+<form action="/genres/add" method="POST" class="user-list">
+
+  <!-- Game Title -->
+  <div class="form-group">
+    <label for="name">Genre Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter genre name" 
+    required />
+  </div>
+
+
+  <!-- Submit -->
+  <div class="form-group btn">
+    <button type="submit" class="primary">Add Genre <i class="mi">add</i></button>
+  </div>
+
+</form>
+
+      </main>
+
+      <footer class="footer"></footer>
+
+    </div>
+  </body>
+</html>

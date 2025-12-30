@@ -184,3 +184,39 @@ exports.deleteGame = async (gameId) => {
 
   return rowCount > 0;
 };
+
+// Genres Queries
+
+exports.getAllGenres = async() => {
+  const SQL = `SELECT * FROM genre ORDER BY name ASC`;
+  const {rows} = await pool.query(SQL);
+  return rows;
+}
+
+exports.getGenreById = async(genreId)=> {
+  const SQL = `SELECT * FROM genre WHERE id=$1`;
+  const {rows} = await pool.query(SQL, [genreId]);
+  return rows[0];
+}
+
+exports.createGenre = async (name) => {
+  await pool.query(
+    "INSERT INTO genre (name) VALUES ($1) RETURNING id",
+    [name]
+  );
+};
+
+exports.updateGenre = async (genreId, name) => {
+  const SQL = `UPDATE genre SET name=$2 WHERE id=$1 RETURNING *`;
+  const rows = await pool.query(SQL, [genreId, name]);
+  return rows;
+}
+
+exports.deleteGenre = async (genreId) => {
+  const { rowCount } = await pool.query(
+    `DELETE FROM genre WHERE id = $1`,
+    [genreId]
+  );
+
+  return rowCount > 0;
+};

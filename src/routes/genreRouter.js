@@ -7,5 +7,5 @@ genresRouter.get("/{:id}/edit", controller.renderEditGenres);
 genresRouter.post("/{:id}/update", controller.postUpdateGenre);
 // genresRouter.post("/delete/{:id}", controller.deletegenre);
 genresRouter.get("/add", controller.renderAddGenre);
-// genresRouter.post("/add", controller.postAddNewgenre);
+genresRouter.post("/add", controller.postAddNewGenre);
 module.exports = genresRouter;

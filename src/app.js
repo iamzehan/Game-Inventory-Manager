@@ -47,6 +47,7 @@ const routes = require('./routes');
 app.use("/", routes.dashboardRouter);
 app.use("/games", routes.gamesRouter);
 app.use("/genres", routes.genreRouter);
+app.use("/developers", routes.developersRouter);
 
 
 // port

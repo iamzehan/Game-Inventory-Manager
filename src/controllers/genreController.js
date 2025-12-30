@@ -12,6 +12,10 @@ exports.renderEditGenres = async(req, res) => {
   res.render("editGenre", {title: "Edit Genre", genre});
 }
 
+exports.renderAddGenre = async(req, res) => {
+  res.render("addNewGenre", {title: "Add new Genre"})
+}
+
 exports.postUpdateGenre = async(req, res)=> {
   const genreId = Number(req.params.id);
   const {name} = req.body;

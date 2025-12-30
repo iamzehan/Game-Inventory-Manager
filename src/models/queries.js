@@ -188,7 +188,7 @@ exports.deleteGame = async (gameId) => {
 // Genres Queries
 
 exports.getAllGenres = async() => {
-  const SQL = `SELECT * FROM genre`;
+  const SQL = `SELECT * FROM genre ORDER BY name ASC`;
   const {rows} = await pool.query(SQL);
   return rows;
 }
@@ -197,4 +197,10 @@ exports.getGenreById = async(genreId)=> {
   const SQL = `SELECT * FROM genre WHERE id=$1`;
   const {rows} = await pool.query(SQL, [genreId]);
   return rows[0];
+}
+
+exports.updateGenre = async (genreId, name) => {
+  const SQL = `UPDATE genre SET name=$2 WHERE id=$1 RETURNING *`;
+  const rows = await pool.query(SQL, [genreId, name]);
+  return rows;
 }

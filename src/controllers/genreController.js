@@ -11,3 +11,16 @@ exports.renderEditGenres = async(req, res) => {
   const genre = await db.getGenreById(genreId);
   res.render("editGenre", {title: "Edit Genre", genre});
 }
+
+exports.postUpdateGenre = async(req, res)=> {
+  const genreId = Number(req.params.id);
+  const {name} = req.body;
+  try{
+  const genre = await db.updateGenre(genreId, name);
+  res.redirect("/genres");
+  }
+  catch(err){
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+}

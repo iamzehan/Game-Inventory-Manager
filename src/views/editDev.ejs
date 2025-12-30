@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <header class="sidebar">
+        <%- include('partials/navbar', { page: 'developers' }) %>
+      </header>
+
+      <!-- Main Content -->
+      <main class="content add-games">
+        <a href="/developers">
+          <button class="close">
+            <i class="mi">close</i>
+          </button>
+        </a>
+        <span class="hero-icon update"><i class="mi">edit_square</i></span>
+        <h1 class="title"><%= title %></h1>
+
+<form action="/developers/<%= developer.id %>/update" method="POST" class="user-list">
+
+  <!-- Game Title -->
+  <div class="form-group">
+    <label for="name">Developer Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter developer name" 
+    required value="<%= developer.name %>" />
+  </div>
+
+
+  <!-- Submit -->
+  <div class="form-group btn">
+    <button type="submit" class="primary update">Update Developer <i class="mi">edit_square</i></button>
+  </div>
+
+</form>
+
+      </main>
+
+      <footer class="footer"></footer>
+
+    </div>
+  </body>
+</html>

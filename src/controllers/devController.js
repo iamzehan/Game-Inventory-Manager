@@ -6,11 +6,11 @@ exports.renderDevelopers = async (req, res) => {
   res.render("developer", { title: "Developer", developers });
 };
 
-// exports.renderEditDevelopers = async (req, res) => {
-//   const developerId = req.params.id;
-//   const developer = await db.getDeveloperById(developerId);
-//   res.render("editDeveloper", { title: "Edit Developer", developer });
-// };
+exports.renderEditDevelopers = async (req, res) => {
+  const developerId = req.params.id;
+  const developer = await db.getDeveloperById(developerId);
+  res.render("editDev", { title: "Edit Developer", developer });
+};
 
 // exports.renderAddDeveloper = async (req, res) => {
 //   res.render("addNewDeveloper", { title: "Add New Developer" });

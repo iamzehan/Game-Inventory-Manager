@@ -220,3 +220,14 @@ exports.deleteGenre = async (genreId) => {
 
   return rowCount > 0;
 };
+
+
+// Developers
+
+exports.getDeveloperById = async (developerId) => {
+  const SQL = `
+    SELECT * from developer WHERE id=$1
+    `;
+  const { rows } = await pool.query(SQL, [developerId]);
+  return rows[0];
+};

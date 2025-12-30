@@ -12,9 +12,9 @@ exports.renderEditDevelopers = async (req, res) => {
   res.render("editDev", { title: "Edit Developer", developer });
 };
 
-// exports.renderAddDeveloper = async (req, res) => {
-//   res.render("addNewDeveloper", { title: "Add New Developer" });
-// };
+exports.renderAddDeveloper = async (req, res) => {
+  res.render("addNewDev", { title: "Add New Developer" });
+};
 
 exports.postUpdateDeveloper = async (req, res) => {
   const developerId = Number(req.params.id);

@@ -176,3 +176,11 @@ exports.updateDevelopers = async (gameId, developerIds = []) => {
   }
 };
 
+exports.deleteGame = async (gameId) => {
+  const { rowCount } = await pool.query(
+    `DELETE FROM game WHERE id = $1`,
+    [gameId]
+  );
+
+  return rowCount > 0;
+};

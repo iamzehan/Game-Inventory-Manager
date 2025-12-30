@@ -97,3 +97,82 @@ exports.addDevelopers = async (gameId, developerIds = []) => {
     `INSERT INTO game_developer (game_id, developer_id) VALUES ${values}`
   );
 };
+
+// update a game
+exports.updateGame = async (gameId, title, description) => {
+  const result = await pool.query(
+    "UPDATE game SET title = $2, description=$3 WHERE id=$1 RETURNING id",
+    [gameId, title, description]
+  );
+  return result.rows[0].id;
+};
+// update genres for a game
+exports.updateGenres = async (gameId, genreIds = []) => {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    // Remove existing genres
+    await client.query(
+      `DELETE FROM game_genre WHERE game_id = $1`,
+      [gameId]
+    );
+
+    // Insert new genres
+    if (genreIds.length > 0) {
+      const values = genreIds
+        .map((_, i) => `($1, $${i + 2})`)
+        .join(",");
+
+      await client.query(
+        `INSERT INTO game_genre (game_id, genre_id)
+         VALUES ${values}`,
+        [gameId, ...genreIds]
+      );
+    }
+
+    await client.query("COMMIT");
+  } catch (err) {
+    await client.query("ROLLBACK");
+    throw err;
+  } finally {
+    client.release();
+  }
+};
+
+// update developers for a game
+exports.updateDevelopers = async (gameId, developerIds = []) => {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    // Remove existing developers
+    await client.query(
+      `DELETE FROM game_developer WHERE game_id = $1`,
+      [gameId]
+    );
+
+    // Insert new developers
+    if (developerIds.length > 0) {
+      const values = developerIds
+        .map((_, i) => `($1, $${i + 2})`)
+        .join(",");
+
+      await client.query(
+        `INSERT INTO game_developer (game_id, developer_id)
+         VALUES ${values}`,
+        [gameId, ...developerIds]
+      );
+    }
+
+    await client.query("COMMIT");
+  } catch (err) {
+    await client.query("ROLLBACK");
+    throw err;
+  } finally {
+    client.release();
+  }
+};
+

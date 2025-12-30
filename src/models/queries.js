@@ -220,3 +220,35 @@ exports.deleteGenre = async (genreId) => {
 
   return rowCount > 0;
 };
+
+
+// Developers
+
+exports.getDeveloperById = async (developerId) => {
+  const SQL = `
+    SELECT * from developer WHERE id=$1
+    `;
+  const { rows } = await pool.query(SQL, [developerId]);
+  return rows[0];
+};
+
+exports.updateDeveloper = async (developerId, name) => {
+  const SQL = `UPDATE developer SET name=$2 WHERE id=$1 RETURNING *`;
+  const rows = await pool.query(SQL, [developerId, name]);
+  return rows;
+}
+
+exports.createDeveloper = async (name) => {
+  await pool.query(
+    "INSERT INTO developer (name) VALUES ($1) RETURNING id",
+    [name]
+  );
+};
+
+exports.deleteDeveloper = async (developerId) => {
+  const { rowCount } = await pool.query(
+    `DELETE FROM developer WHERE id = $1`,
+    [developerId]
+  );
+  return rowCount > 0;
+};

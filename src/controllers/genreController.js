@@ -38,3 +38,25 @@ exports.postAddNewGenre = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+// Delete game
+exports.deleteGenre = async (req, res) => {
+  const genreId = Number(req.params.id);
+
+  if (!Number.isInteger(genreId)) {
+    return res.status(400).send("Invalid genre ID");
+  }
+
+  try {
+    const isDeleted = await db.deleteGenre(genreId);
+
+    if (!isDeleted) {
+      return res.status(404).send("Genre not found");
+    }
+    
+    res.redirect("/genres");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};

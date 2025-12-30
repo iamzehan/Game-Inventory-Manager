@@ -211,3 +211,12 @@ exports.updateGenre = async (genreId, name) => {
   const rows = await pool.query(SQL, [genreId, name]);
   return rows;
 }
+
+exports.deleteGenre = async (genreId) => {
+  const { rowCount } = await pool.query(
+    `DELETE FROM genre WHERE id = $1`,
+    [genreId]
+  );
+
+  return rowCount > 0;
+};

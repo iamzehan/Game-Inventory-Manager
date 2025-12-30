@@ -156,7 +156,7 @@ body {
   background-color: white;
   box-shadow: var(--box-shadow-1);
   cursor: pointer;
-  transition: 0.3s scale ease-in-out, 0.5s color ease-in-out;;
+  transition: 0.3s scale ease-in-out, 0.5s color ease-in-out;
   position: relative;
   z-index: 5;
   &::before {
@@ -577,3 +577,63 @@ button.primary.update {
   background-color: var(--color-blue-3);
   text-shadow: 2px 1px var(--border-1);
 }
+
+.random-games-container {
+  display: flex;
+  flex-direction: column;
+}
+.random-games-container > .game-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: 0.5em;
+  padding: 1em 3em;
+}
+.game-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  border: 1px solid var(--border-1);
+  border-radius: 0.5em;
+  padding-bottom: 2em;
+  background-color: white;
+  box-shadow: var(--box-shadow-1);
+  transition: 0.3s all ease-in-out;
+  &:hover {
+    background-color: var(--color-blue-3-fade);
+  }
+}
+.game-card > .game-thumbnail {
+  height: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: inherit;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.game-card > .game-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-blue-2);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #242424;
+    color: white;
+  }
+  .game-card {
+    background-color: var(--backdrop-1);
+  }
+  .game-title {
+    color: white !important;
+  }
+  table{
+    background-color: #242424!important;
+  }
+  td{
+    color: white!important;
+  }
+} */

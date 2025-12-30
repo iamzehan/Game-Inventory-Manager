@@ -252,3 +252,20 @@ exports.deleteDeveloper = async (developerId) => {
   );
   return rowCount > 0;
 };
+
+
+exports.getRandomGames = async () => {
+  const SQL = `
+        SELECT g.title as name, img.url
+        FROM game as g
+        LEFT JOIN game_image as i
+        ON g.id=i.game_id
+        LEFT JOIN image as img
+        ON i.image_id= img.id 
+        WHERE img.url IS NOT NULL
+        ORDER BY RANDOM()
+        LIMIT 4;
+      `
+  const {rows} = await pool.query(SQL);
+  return rows;
+}

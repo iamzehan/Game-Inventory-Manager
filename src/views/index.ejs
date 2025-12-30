@@ -3,22 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
     <title><%= title %></title>
   </head>
   <body>
     <div class="container">
-      <header class="sidebar"><%- include('partials/navbar', { page: 'home' }) %>
-</header>
+      <header class="sidebar">
+        <%- include('partials/navbar', { page: 'home' }) %>
+      </header>
       <main class="content">
-        <h1 class="title" align="left" style="margin-left: 1.5em; display:flex; align-items:center"><i class="mi">dashboard</i>Dashboard</h1>
+        <h1
+          class="title"
+          align="left"
+          style="margin-left: 1.5em; display: flex; align-items: center"
+        >
+          <i class="mi">dashboard</i>Dashboard
+        </h1>
         <div class="total-counts">
           <% Object.entries(counts).forEach(([key, value]) => { %>
           <div class="items">
             <p class="title">Total <%=key%></p>
-            <p class="count"> <%= value %></p>
+            <p class="count"><%= value %></p>
           </div>
           <% }) %>
+        </div>
+        <div class="random-games-container">
+          <h1 class="title">Games</h1>
+          <div class="game-card-container">
+            <%games.forEach((game)=> { %>
+              <div class="game-card">
+                <img alt="<%=game.name%>" src="<%=game.url%>" class="game-thumbnail"/>
+                <p class="game-title"><%=game.name%></p>
+              </div>
+            <%})
+            %>
+          </div>  
         </div>
       </main>
       <footer class="footer"></footer>

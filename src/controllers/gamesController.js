@@ -59,3 +59,25 @@ exports.postUpdateGame = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+
+// Delete game
+exports.deleteGame = async (req, res) => {
+  const gameId = Number(req.params.id);
+
+  if (!Number.isInteger(gameId)) {
+    return res.status(400).send("Invalid game ID");
+  }
+
+  try {
+    const isDeleted = await db.deleteGame(gameId);
+
+    if (!isDeleted) {
+      return res.status(404).send("Game not found");
+    }
+    
+    res.redirect("/games");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};

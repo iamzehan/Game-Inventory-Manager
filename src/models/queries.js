@@ -231,3 +231,9 @@ exports.getDeveloperById = async (developerId) => {
   const { rows } = await pool.query(SQL, [developerId]);
   return rows[0];
 };
+
+exports.updateDeveloper = async (developerId, name) => {
+  const SQL = `UPDATE developer SET name=$2 WHERE id=$1 RETURNING *`;
+  const rows = await pool.query(SQL, [developerId, name]);
+  return rows;
+}

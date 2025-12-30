@@ -16,17 +16,17 @@ exports.renderEditDevelopers = async (req, res) => {
 //   res.render("addNewDeveloper", { title: "Add New Developer" });
 // };
 
-// exports.postUpdateDeveloper = async (req, res) => {
-//   const developerId = Number(req.params.id);
-//   const { name } = req.body;
-//   try {
-//     const developer = await db.updateDeveloper(developerId, name);
-//     res.redirect("/developers");
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Server Error");
-//   }
-// };
+exports.postUpdateDeveloper = async (req, res) => {
+  const developerId = Number(req.params.id);
+  const { name } = req.body;
+  try {
+    const developer = await db.updateDeveloper(developerId, name);
+    res.redirect("/developers");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
 
 // exports.postAddNewDeveloper = async (req, res) => {
 //   const { name } = req.body;

@@ -184,3 +184,11 @@ exports.deleteGame = async (gameId) => {
 
   return rowCount > 0;
 };
+
+// Genres Queries
+
+exports.getAllGenres = async() => {
+  const SQL = `SELECT * FROM genre`;
+  const {rows} = await pool.query(SQL);
+  return rows;
+}

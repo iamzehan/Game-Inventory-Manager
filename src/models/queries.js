@@ -244,3 +244,11 @@ exports.createDeveloper = async (name) => {
     [name]
   );
 };
+
+exports.deleteDeveloper = async (developerId) => {
+  const { rowCount } = await pool.query(
+    `DELETE FROM developer WHERE id = $1`,
+    [developerId]
+  );
+  return rowCount > 0;
+};

@@ -39,24 +39,24 @@ exports.postAddNewDeveloper = async (req, res) => {
   }
 };
 
-// // Delete game
-// exports.deleteDeveloper = async (req, res) => {
-//   const developerId = Number(req.params.id);
+// Delete developer
+exports.deleteDeveloper = async (req, res) => {
+  const developerId = Number(req.params.id);
 
-//   if (!Number.isInteger(developerId)) {
-//     return res.status(400).send("Invalid developer ID");
-//   }
+  if (!Number.isInteger(developerId)) {
+    return res.status(400).send("Invalid developer ID");
+  }
 
-//   try {
-//     const isDeleted = await db.deleteDeveloper(developerId);
+  try {
+    const isDeleted = await db.deleteDeveloper(developerId);
 
-//     if (!isDeleted) {
-//       return res.status(404).send("Developer not found");
-//     }
+    if (!isDeleted) {
+      return res.status(404).send("Developer not found");
+    }
     
-//     res.redirect("/developers");
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Server Error");
-//   }
-// };
+    res.redirect("/developers");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};

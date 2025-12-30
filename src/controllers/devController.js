@@ -28,16 +28,16 @@ exports.postUpdateDeveloper = async (req, res) => {
   }
 };
 
-// exports.postAddNewDeveloper = async (req, res) => {
-//   const { name } = req.body;
-//   try {
-//     await db.createDeveloper(name);
-//     res.redirect("/developers");
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send("Server Error");
-//   }
-// };
+exports.postAddNewDeveloper = async (req, res) => {
+  const { name } = req.body;
+  try {
+    await db.createDeveloper(name);
+    res.redirect("/developers");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
 
 // // Delete game
 // exports.deleteDeveloper = async (req, res) => {

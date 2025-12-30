@@ -237,3 +237,10 @@ exports.updateDeveloper = async (developerId, name) => {
   const rows = await pool.query(SQL, [developerId, name]);
   return rows;
 }
+
+exports.createDeveloper = async (name) => {
+  await pool.query(
+    "INSERT INTO developer (name) VALUES ($1) RETURNING id",
+    [name]
+  );
+};

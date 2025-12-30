@@ -199,6 +199,13 @@ exports.getGenreById = async(genreId)=> {
   return rows[0];
 }
 
+exports.createGenre = async (name) => {
+  await pool.query(
+    "INSERT INTO genre (name) VALUES ($1) RETURNING id",
+    [name]
+  );
+};
+
 exports.updateGenre = async (genreId, name) => {
   const SQL = `UPDATE genre SET name=$2 WHERE id=$1 RETURNING *`;
   const rows = await pool.query(SQL, [genreId, name]);

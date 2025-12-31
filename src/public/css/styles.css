@@ -385,14 +385,14 @@ td.icon {
     background-color: var(--backdrop-2);
     position: relative;
     &::before {
-      content: "sports_esports";
+      content: "";
       position: absolute;
-      color: var(--color-red);
-      inset: inherit;
-      padding: 0.25em;
       border-radius: 1em;
-      left: 0;
-      top: 0;
+      background-color: green;
+      inset: inherit;
+      padding: 0.1em;
+      left: 0.1em;
+      border-radius: 1em;
       animation: var(--animate-pulse);
     }
   }

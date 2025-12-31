@@ -30,7 +30,7 @@
           <table class="games-table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th></th>
                 <th>name</th>
                 <th class="actions-col">Edit</th>
                 <th class="actions-col">Delete</th>
@@ -44,7 +44,7 @@
               </tr>
               <% } %> <% developers.forEach((developer) => { %>
               <tr data-id="<%= developer.id %>">
-                <td><%= developer.id %></td>
+                <td class="icon"><i class="mi">code</i></td>
                 <td><%= developer.name %></td>
                 <td class="actions">
                   <a href="/developers/<%= developer.id %>/edit" class="btn btn-edit"

@@ -66,18 +66,49 @@ body {
   background-color: var(--color-blue-1);
   color: white;
   position: fixed;
+  z-index: 10;
+  
 }
 
 .sidebar.hide{
   transform: translateX(-100%);
 }
-main.expand{
+.sidebar.hide + main{
   transform: translateX(-300px);
   width: 100vw;
+  .title{
+    margin-left: 2em;
+  }
 }
 .navbar {
   background: var(--color-blue-1);
   backdrop-filter: blur(10px);
+}
+.burger-menu{
+  position: absolute;
+  font-size: 1.5rem;
+  top: 0.5em;
+  left: 0.25em;
+  z-index: -1;
+  cursor: pointer;
+  color: var(--color-blue-1);
+  &:hover{
+    color: var(--color-blue-2)
+  }
+}
+.menu-close{
+  position: absolute;
+  font-size: 1.5rem;
+  top: 0.75em;
+  left: 260px;
+  cursor: pointer;
+  &:hover{
+    color: var(--color-red);
+  }
+}
+.sidebar.hide .burger-menu{
+  z-index: 20;
+  margin-left: 300px;
 }
 
 .nav-container {
@@ -87,7 +118,6 @@ main.expand{
   align-items: center;
   justify-content: space-between;
 }
-
 .logo {
   font-size: 1.5rem;
   padding: 0.5em 1em;

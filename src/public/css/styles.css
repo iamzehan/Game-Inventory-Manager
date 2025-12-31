@@ -46,7 +46,7 @@ i.mi {
   --backdrop-2: rgba(180, 180, 180, 0.2);
   --color-yellow-1: rgb(255, 217, 0);
   --color-yellow-2: rgb(255, 187, 0);
-  --animate-pulse: 1s animate-pulse ease infinite
+  --animate-pulse: 1s animate-pulse ease infinite;
 }
 body {
   margin: 0;
@@ -734,12 +734,36 @@ button.primary.update {
   }
 }
 
-@keyframes animate-pulse{
+/* Delete Dialog styles */
+
+dialog[open].delete-dialog {
+  border: 1px solid var(--border-1);
+  width: fit-content;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em 2em;
+  &::backdrop {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  button {
+    padding: 1em 2em;
+    font-size: 1rem;
+    border: none;
+  }
+  button.dialog.delete {
+    background-color: var(--color-red);
+    color: white;
+  }
+}
+@keyframes animate-pulse {
   from {
     scale: 1;
     opacity: 1;
   }
-  to{
+  to {
     scale: 1.5;
     opacity: 0;
   }

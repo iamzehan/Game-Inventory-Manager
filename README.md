@@ -99,6 +99,8 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 ![games](readme_assets/5.png)
 ## Edit Genre Form
 ![games](readme_assets/6.png)
+## Delete View
+![games](readme_assets/9.png)
 ---
 
 ## ⭐ Support

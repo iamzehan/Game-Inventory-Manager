@@ -676,3 +676,29 @@ button.primary.update {
     color: white!important;
   }
 } */
+
+@media(max-width:460px){
+  .content.games .header .search-form{
+    max-width: 360px;
+  }
+  .subcontainer{
+    width: 80vw!important;
+    align-items: center!important;
+    flex-direction: column-reverse!important;
+  }
+  table{
+    width:380px!important;
+  }
+  th, tr, td{
+    font-size: 0.5rem!important;
+  }
+  .content.content.add-games{
+    border-radius: 0;
+    box-shadow: none;
+    h1.title{
+      text-align: center;
+      width: 100%;
+      align-self: flex-end!important;
+    }
+  }
+}

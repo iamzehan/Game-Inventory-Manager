@@ -42,9 +42,11 @@ i.mi {
   --border-2: rgba(128, 128, 128, 0.5);
   --box-shadow-1: 0px 5px 15px 5px var(--border-1);
   --box-shadow-2: 0px 1px 5px 1px var(--color-blue-3-fade);
-  --backdrop-1: rgba(180, 180, 180, 0.103);
+  --backdrop-1: rgba(180, 180, 180, 0.1);
+  --backdrop-2: rgba(180, 180, 180, 0.2);
   --color-yellow-1: rgb(255, 217, 0);
   --color-yellow-2: rgb(255, 187, 0);
+  --animate-pulse: 1s animate-pulse ease infinite
 }
 body {
   margin: 0;
@@ -70,13 +72,13 @@ body {
   z-index: 10;
 }
 
-.sidebar.hide{
+.sidebar.hide {
   transform: translateX(-100%);
 }
-.sidebar.hide + main{
+.sidebar.hide + main {
   transform: translateX(-300px);
   width: 100vw;
-  .title{
+  .title {
     margin-left: 2em;
   }
 }
@@ -85,7 +87,7 @@ body {
   backdrop-filter: blur(10px);
   height: 100%;
 }
-.burger-menu{
+.burger-menu {
   position: fixed;
   font-size: 1.5rem;
   top: 0.5em;
@@ -93,21 +95,21 @@ body {
   z-index: -1;
   cursor: pointer;
   color: var(--color-blue-1);
-  &:hover{
-    color: var(--color-blue-2)
+  &:hover {
+    color: var(--color-blue-2);
   }
 }
-.menu-close{
+.menu-close {
   position: absolute;
   font-size: 1.5rem;
   top: 0.75em;
   left: 260px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: var(--color-red);
   }
 }
-.sidebar.hide .burger-menu{
+.sidebar.hide .burger-menu {
   z-index: 20;
   margin-left: 300px;
 }
@@ -373,6 +375,27 @@ button.primary {
   padding: 0.75rem 1rem;
   text-align: left;
   border-bottom: 1px solid var(--border-1);
+}
+
+td.icon {
+  i {
+    color: var(--color-red);
+    padding: 0.25em;
+    border-radius: 1em;
+    background-color: var(--backdrop-2);
+    position: relative;
+    &::before {
+      content: "sports_esports";
+      position: absolute;
+      color: var(--color-red);
+      inset: inherit;
+      padding: 0.25em;
+      border-radius: 1em;
+      left: 0;
+      top: 0;
+      animation: var(--animate-pulse);
+    }
+  }
 }
 
 .games-table th {
@@ -679,32 +702,45 @@ button.primary.update {
   }
 } */
 
-@media(max-width:460px){
-  .content.games .header .search-form{
+@media (max-width: 460px) {
+  .content.games .header .search-form {
     max-width: 360px;
   }
-  .subcontainer{
-    width: 80vw!important;
-    align-items: center!important;
-    flex-direction: column-reverse!important;
+  .subcontainer {
+    width: 80vw !important;
+    align-items: center !important;
+    flex-direction: column-reverse !important;
   }
-  .random-games-container h1.title{
+  .random-games-container h1.title {
     text-align: left;
     margin-left: 1em;
   }
-  table{
-    width:380px!important;
+  table {
+    width: 380px !important;
   }
-  th, tr, td{
-    font-size: 0.5rem!important;
+  th,
+  tr,
+  td {
+    font-size: 0.5rem !important;
   }
-  .content.content.add-games{
+  .content.content.add-games {
     border-radius: 0;
     box-shadow: none;
-    h1.title{
+    h1.title {
       text-align: center;
       width: 100%;
-      align-self: flex-end!important;
+      align-self: flex-end !important;
     }
+  }
+}
+
+@keyframes animate-pulse{
+  from {
+    scale: 1;
+    opacity: 1;
+  }
+  to{
+    scale: 1.5;
+    opacity: 0;
   }
 }

@@ -23,4 +23,8 @@
   burger.addEventListener("click", (e)=> {
     sidebar.classList.remove("hide");
   })
+
+  // prevent active one from page refresh
+  const active = document.querySelector(".nav-links > .link-items > a.active");
+  active.addEventListener("click", (e)=> e.preventDefault());
 </script>

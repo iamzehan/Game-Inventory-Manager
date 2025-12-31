@@ -23,7 +23,7 @@
         </div>
 
         <div class="subcontainer">
-          
+          <%- include('partials/deleteDialog') %>
           <a href="/games/add"
             ><button class="primary">Add new <i class="mi">add</i></button></a
           >
@@ -65,6 +65,7 @@
                     action="/games/delete/<%= game.id %>"
                     method="POST"
                     class="inline-form"
+                    id="delete-form"
                   >
                     <button class="delete" type="submit" class="btn btn-delete">
                       <i class="mi">delete</i>
@@ -78,6 +79,7 @@
         </div>
       </main>
       <footer class="footer"></footer>
+      <script src="/js/main.js"></script>
     </div>
   </body>
 </html>

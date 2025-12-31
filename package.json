@@ -1,6 +1,6 @@
 {
   "name": "game-inventory-mgt",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Managing Games with Express and PostgreSQL",
   "main": "index.js",
   "scripts": {

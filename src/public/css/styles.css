@@ -744,6 +744,9 @@ dialog[open].delete-dialog {
   flex-direction: column;
   gap: 1em;
   padding: 1em 2em;
+  .dialog.message{
+    color: var(--color-red);
+  }
   &::backdrop {
     backdrop-filter: blur(5px);
     background-color: rgba(0, 0, 0, 0.7);

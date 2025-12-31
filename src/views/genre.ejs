@@ -30,7 +30,7 @@
           <table class="games-table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th></th>
                 <th>name</th>
                 <th class="actions-col">Edit</th>
                 <th class="actions-col">Delete</th>
@@ -44,7 +44,7 @@
               </tr>
               <% } %> <% genres.forEach((genre) => { %>
               <tr data-id="<%= genre.id %>">
-                <td><%= genre.id %></td>
+                <td class="icon"><i class="mi">category</i></td>
                 <td><%= genre.name %></td>
                 <td class="actions">
                   <a href="/genres/<%= genre.id %>/edit" class="btn btn-edit"

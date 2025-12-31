@@ -30,7 +30,7 @@
           <table class="games-table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th></th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Genre</th>
@@ -44,9 +44,9 @@
               <tr>
                 <td colspan="5" class="empty-state">No games found</td>
               </tr>
-              <% } %> <% games.forEach((game) => { %>
+              <% } %> <% games.forEach((game, idx) => { %>
               <tr data-id="<%= game.id %>">
-                <td><%= game.id %></td>
+                <td class="icon"><i class="mi">sports_esports</i></td>
                 <td><%= game.title %></td>
                 <td><%= game.description %></td>
                 <td>

@@ -15,6 +15,7 @@
 
       <!-- Main Content -->
       <main class="content add-games">
+        <%- include('partials/confirmDialog') %>
         <a href="/developers">
           <button class="close">
             <i class="mi">close</i>
@@ -23,27 +24,30 @@
         <span class="hero-icon new"><i class="mi">category</i></span>
         <h1 class="title"><%= title %></h1>
 
-<form action="/developers/add" method="POST" class="user-list">
+        <form action="/developers/add" method="POST" class="submit-form" data-name="add">
+          <!-- Developer Title -->
+          <div class="form-group">
+            <label for="name">Developer Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter developer name"
+              required
+            />
+          </div>
 
-  <!-- Developer Title -->
-  <div class="form-group">
-    <label for="name">Developer Name</label>
-    <input type="text" name="name" id="name" placeholder="Enter developer name" 
-    required />
-  </div>
-
-
-  <!-- Submit -->
-  <div class="form-group btn">
-    <button type="submit" class="primary">Add Developer <i class="mi">add</i></button>
-  </div>
-
-</form>
-
+          <!-- Submit -->
+          <div class="form-group btn">
+            <button type="submit" class="primary">
+              Add Developer <i class="mi">add</i>
+            </button>
+          </div>
+        </form>
       </main>
 
       <footer class="footer"></footer>
-
+      <script src="/js/confirm.js"></script>
     </div>
   </body>
 </html>

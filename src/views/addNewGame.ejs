@@ -15,6 +15,7 @@
 
       <!-- Main Content -->
       <main class="content add-games">
+        <%- include('partials/confirmDialog') %>
         <a href="/games">
           <button class="close">
             <i class="mi">close</i>
@@ -22,8 +23,7 @@
         </a>
         <span class="hero-icon new"><i class="mi">videogame_asset</i></span>
         <h1 class="title"><%= title %></h1>
-
-        <form action="/games/add" method="POST" class="user-list">
+        <form action="/games/add" method="POST" class="submit-form" data-name="add">
           <!-- Game Title -->
           <div class="form-group">
             <label for="title">Game Name</label>
@@ -87,6 +87,7 @@
             </button>
           </div>
         </form>
+        <script src="/js/confirm.js"></script>
       </main>
 
       <footer class="footer"></footer>

@@ -101,6 +101,14 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 ![games](readme_assets/6.png)
 ## Delete View
 ![games](readme_assets/9.png)
+## Confirmation Popup Modals
+### Add
+![games](readme_assets/10.png)
+![games](readme_assets/11.png)
+
+### Update
+![games](readme_assets/12.png)
+
 ---
 
 ## ⭐ Support

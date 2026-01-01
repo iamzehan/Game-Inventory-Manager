@@ -15,6 +15,7 @@
 
       <!-- Main Content -->
       <main class="content add-games">
+        <%- include('partials/confirmDialog') %>
         <a href="/developers">
           <button class="close">
             <i class="mi">close</i>
@@ -23,7 +24,7 @@
         <span class="hero-icon update"><i class="mi">edit_square</i></span>
         <h1 class="title"><%= title %></h1>
 
-<form action="/developers/<%= developer.id %>/update" method="POST" class="user-list">
+<form action="/developers/<%= developer.id %>/update" method="POST" class="submit-form" data-name="update">
 
   <!-- Game Title -->
   <div class="form-group">
@@ -43,7 +44,7 @@
       </main>
 
       <footer class="footer"></footer>
-
+      <script src="/js/confirm.js"></script>
     </div>
   </body>
 </html>

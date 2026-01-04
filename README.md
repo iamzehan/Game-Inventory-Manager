@@ -30,10 +30,22 @@ npm run dev
 
 ### 4️⃣ Open in browser
 
-```text
+```shell
 http://localhost:3000
 ```
 
+### 5️⃣ Populate Database
+```shell
+node ./src/models/populatedb
+```
+### 6️⃣ Create Super User (v2.0.0 update)
+```shell
+node ./src/models/createUser
+```
+### 7️⃣ Create session table for session persist (v2.0.0 update)
+```shell
+node ./src/models/session
+```
 ---
 
 ## 🗂 Project Structure
@@ -41,6 +53,7 @@ http://localhost:3000
 ```text
 Express-APP-template/
 ├── src
+    ├── auth/               # Passport auth handler
     ├── controllers/        # Request handlers (business logic)
     ├── models/             # Database logic
     ├── routes/             # Application routes
@@ -82,9 +95,12 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
   - Games, Genres, Developers
 * Dashboard View Information
 ---
+## Log in Form (v2.0.0 feature)
+![dashboard](readme_assets/13.png)
+![dashboard](readme_assets/14.png)
 
-## Dashboard
-![dashboard](readme_assets/1.png)
+## Dashboard (version 2.0.0 shows logged in user) 
+![dashboard](readme_assets/15.png)
 ## Games Inventory Data View
 ![games](readme_assets/2.png)
 ## Developers Inventory Data view

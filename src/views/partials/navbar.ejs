@@ -3,12 +3,38 @@
     <a href="/" class="logo"><i class="mi">inventory</i> Inventory</a>
     <div class="menu-close"><i class="mi">close</i></div>
     <ul class="nav-links">
-      <li class="link-items user"><a><i class="mi">person</i><%=locals.currentUser.username%></a></li>
-      <li class="link-items"><a href="/" class="<%= page === 'home' ? 'active' : '' %>"><i class="mi">dashboard</i> Dashboard</a></li>
-      <li class="link-items"><a href="/games" class="<%= page === 'games' ? 'active' : '' %>"><i class="mi">sports_esports</i>Games</a></li>
-      <li class="link-items"><a href="/genres" class="<%= page === 'genres' ? 'active' : '' %>"><i class="mi">category</i>Genres</a></li>
-      <li class="link-items"><a href="/developers" class="<%= page === 'developers' ? 'active' : '' %>"><i class="mi">code</i>Developers</a></li>
-      <li class="link-items"><a href="/logout"><i class="mi">logout</i>Logout</a></li>
+      <li class="link-items user">
+        <a><i class="mi">person</i>
+          <%=locals.currentUser.username%>
+          <i class="mi" id="theme-toggle">dark_mode</i>
+        </a>
+        
+      </li>
+      <li class="link-items">
+        <a href="/" class="<%= page === 'home' ? 'active' : '' %>"
+          ><i class="mi">dashboard</i> Dashboard</a
+        >
+      </li>
+      <li class="link-items">
+        <a href="/games" class="<%= page === 'games' ? 'active' : '' %>"
+          ><i class="mi">sports_esports</i>Games</a
+        >
+      </li>
+      <li class="link-items">
+        <a href="/genres" class="<%= page === 'genres' ? 'active' : '' %>"
+          ><i class="mi">category</i>Genres</a
+        >
+      </li>
+      <li class="link-items">
+        <a
+          href="/developers"
+          class="<%= page === 'developers' ? 'active' : '' %>"
+          ><i class="mi">code</i>Developers</a
+        >
+      </li>
+      <li class="link-items">
+        <a href="/logout"><i class="mi">logout</i>Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
@@ -19,14 +45,31 @@
   const burger = document.querySelector(".burger-menu");
   const close = document.querySelector(".menu-close");
 
-  close.addEventListener("click", (e)=> {
+  close.addEventListener("click", (e) => {
     sidebar.classList.add("hide");
-  })
-  burger.addEventListener("click", (e)=> {
+  });
+  burger.addEventListener("click", (e) => {
     sidebar.classList.remove("hide");
-  })
+  });
 
   // prevent active one from page refresh
   const active = document.querySelector(".nav-links > .link-items > a.active");
-  active.addEventListener("click", (e)=> e.preventDefault());
+  active.addEventListener("click", (e) => e.preventDefault());
+
+  const root = document.documentElement;
+  const toggle = document.querySelector("#theme-toggle");
+
+  // Load saved preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    root.dataset.theme = savedTheme
+    toggle.textContent = (savedTheme=== "dark" ? "light" : "dark")+'_mode'
+  };
+
+  toggle?.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    toggle.textContent = (next==="dark"?"light":"dark")+"_mode"; 
+    localStorage.setItem("theme", next);
+  });
 </script>

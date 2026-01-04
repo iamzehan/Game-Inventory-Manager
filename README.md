@@ -125,6 +125,8 @@ DATABASE_URL=postgresql://user:password@localhost:5432/dbname
 ### Update
 ![games](readme_assets/12.png)
 
+## Dark mode (v2.1.0)
+![games](readme_assets/16.gif)
 ---
 
 ## ⭐ Support

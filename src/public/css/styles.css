@@ -208,6 +208,24 @@ body {
   flex-direction: column;
 }
 
+i#theme-toggle{
+  cursor: pointer;
+  
+}
+.add-games{
+  animation: 0.3s popup ease-in forwards;
+}
+@keyframes popup{
+  from{
+    opacity: 0;
+    scale: 0.95;
+  }
+  to{
+    opacity: 100;
+    scale: 1;
+  }
+}
+
 .content > .total-counts {
   display: flex;
   flex-wrap: wrap;
@@ -1719,10 +1737,12 @@ html[data-theme="dark"]{
   .content.add-games,
   .game-card,
   .games-table,
-  .multi-select-trigger,
-  .multi-select-options {
+  .multi-select-trigger {
     background-color: var(--bg-surface);
     border-color: var(--border-1);
+  }
+  .multi-select-options{
+    background-color: var(--color-blue-3);
   }
 
   .content > .total-counts {

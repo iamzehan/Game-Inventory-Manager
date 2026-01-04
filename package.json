@@ -4,6 +4,10 @@
   "description": "Managing Games with Express and PostgreSQL",
   "main": "index.js",
   "scripts": {
+    "createSession":"node ./src/models/session",
+    "createUser": "node ./src/models/createUser",
+    "populate": "node ./src/models/populatedb",
+    "seed" : "npm run createSession && npm run createUser && npm run populate",
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -3,10 +3,12 @@
     <a href="/" class="logo"><i class="mi">inventory</i> Inventory</a>
     <div class="menu-close"><i class="mi">close</i></div>
     <ul class="nav-links">
+      <li class="link-items user"><a><i class="mi">person</i><%=locals.currentUser.username%></a></li>
       <li class="link-items"><a href="/" class="<%= page === 'home' ? 'active' : '' %>"><i class="mi">dashboard</i> Dashboard</a></li>
       <li class="link-items"><a href="/games" class="<%= page === 'games' ? 'active' : '' %>"><i class="mi">sports_esports</i>Games</a></li>
       <li class="link-items"><a href="/genres" class="<%= page === 'genres' ? 'active' : '' %>"><i class="mi">category</i>Genres</a></li>
       <li class="link-items"><a href="/developers" class="<%= page === 'developers' ? 'active' : '' %>"><i class="mi">code</i>Developers</a></li>
+      <li class="link-items"><a href="/logout"><i class="mi">logout</i>Logout</a></li>
     </ul>
   </div>
 </nav>

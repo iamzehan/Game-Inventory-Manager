@@ -98,10 +98,10 @@ async function createTablesAndSeed() {
 
   // Games
   await client.query(`
-    INSERT INTO game (title, description, genre_id) VALUES
-    ('Cyberpunk 2077', 'Open-world futuristic RPG', 3),
-    ('Doom Eternal', 'Fast-paced shooter', 4),
-    ('Assassin’s Creed Valhalla', 'Viking action adventure', 2);
+    INSERT INTO game (title, description) VALUES
+    ('Cyberpunk 2077', 'Open-world futuristic RPG'),
+    ('Doom Eternal', 'Fast-paced shooter'),
+    ('Assassin’s Creed Valhalla', 'Viking action adventure');
   `);
 
   // Developers

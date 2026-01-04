@@ -60,6 +60,7 @@
                     id="delete-form"
                     data-id="<%= genre.name %>"
                   >
+                  <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
                     <button
                       class="delete"
                       type="submit"

@@ -25,7 +25,7 @@
         <h1 class="title"><%= title %></h1>
 
 <form action="/games/<%= game.id %>/update" method="POST" class="submit-form" data-name="update">
-
+<input type="hidden" name="_csrf" value="<%=csrfToken%>" />
   <!-- Game Title -->
   <div class="form-group">
     <label for="title">Game Name</label>

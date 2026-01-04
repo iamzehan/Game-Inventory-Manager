@@ -68,6 +68,7 @@
                     id="delete-form"
                     data-id="<%= game.title %>"
                   >
+                  <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
                     <button class="delete" type="submit" class="btn btn-delete">
                       <i class="mi">delete</i>
                     </button>

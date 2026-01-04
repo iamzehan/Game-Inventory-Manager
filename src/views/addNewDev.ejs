@@ -25,6 +25,7 @@
         <h1 class="title"><%= title %></h1>
 
         <form action="/developers/add" method="POST" class="submit-form" data-name="add">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
           <!-- Developer Title -->
           <div class="form-group">
             <label for="name">Developer Name</label>

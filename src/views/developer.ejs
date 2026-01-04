@@ -59,6 +59,7 @@
                     id="delete-form"
                     data-id="<%= developer.name %>"
                   >
+                  <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
                     <button class="delete" type="submit" class="btn btn-delete">
                       <i class="mi">delete</i>
                     </button>

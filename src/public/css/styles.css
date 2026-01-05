@@ -1713,6 +1713,13 @@ html[data-theme="dark"]{
     background-color: var(--color-blue-1);
   }
 
+  button.edit, .burger-menu{
+    color: white;
+    &:hover{
+      color: var(--color-blue-3);
+    }
+  }
+
   .navbar {
     background: var(--color-blue-1-fade);
   }
